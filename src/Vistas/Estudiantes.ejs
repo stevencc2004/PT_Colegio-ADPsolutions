@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Estudiantes</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <style>
+        /* Estilos para el menú de navegación */
+        nav {
+            background-color: #333;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        nav ul li {
+            float: left;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/InicioPr">Inicio</a></li>
+          <li><a href="/Materias">Materias</a></li>
+          <li><a href="/Estudiante">Estudiantes</a></li>
+          <li><a href="/estudiantesPorMateria">Estudiantes Asignados</a></li>
+          <li><a href="/Login">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+    <div class="container mt-5">
+        <h1>Listado de Estudiantes</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(estudiante => { %>
+                    <tr>
+                        <td><%= estudiante.id %></td>
+                        <td><%= estudiante.nombre %></td>
+                        <td><%= estudiante.correo %></td>
+                        <td>
+                            <a href="/Estudiante/editar/<%= estudiante.id %>" class="btn btn-primary">Editar</a>
+                            <a href="/Estudiante/eliminar/<%= estudiante.id %>" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <a href="/Estudiante/crear" class="btn btn-success">Nuevo Estudiante</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materias no Vistas</title>
+    <style>
+        /* Estilos para el menú de navegación */
+        nav {
+            background-color: #333;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        nav ul li {
+            float: left;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+    </style>
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/inicioEstudiante">Inicio</a></li>
+            <li><a href="/MateriasPorEs">Materias inscritas</a></li>
+            <li><a href="/estudiantes/materias/novistas">Inscribir Materias</a></li>
+            <li><a href="/Login">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+    <div class="container mt-5">
+        <h1>Materias no Vistas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Materia</th>
+                    <th>Nombre Materia</th>
+                    <th>Descripción</th>
+                    <th>Nombre Profesor</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% materiasNoVistas.forEach(materia => { %>
+                    <tr>
+                        <td><%= materia.id_materia %></td>
+                        <td><%= materia.nombre_materia %></td>
+                        <td><%= materia.descripcion %></td>
+                        <td><%= materia.nombre_profesor %></td>
+                        <td>
+                            <form action="/estudiantes/materias/agregar" method="post">
+                                <input type="hidden" name="idMateria" value="<%= materia.id_materia %>">
+                                <button type="submit">Agregar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

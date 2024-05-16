@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiantes Asignados por Materia</title>
+    <style>
+        /* Estilos para el menú de navegación */
+        nav {
+            background-color: #333;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        nav ul li {
+            float: left;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+    </style>
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/inicioProfesor">Inicio</a></li>
+          <li><a href="/Materias">Materias</a></li>
+          <li><a href="/Estudiante">Estudiantes</a></li>
+          <li><a href="/estudiantesPorMateria">Estudiantes Asignados</a></li>
+          <li><a href="/Login">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+    <div class="container mt-5">
+        <h1>Estudiantes Asignados por Materia</h1>
+        <table>
+            <thead >
+                <tr class="container mr-5">
+                    <th>ID Materia</th>
+                    <th>Nombre Materia</th>
+                    <th>ID Estudiante</th>
+                    <th>Nombre Estudiante</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% estudiantesPorMateria.forEach(estudiante => { %>
+                    <tr>
+                        <td><%= estudiante.id_materia %></td>
+                        <td><%= estudiante.nombre_materia %></td>
+                        <td><%= estudiante.id_estudiante %></td>
+                        <td><%= estudiante.nombre_estudiante %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

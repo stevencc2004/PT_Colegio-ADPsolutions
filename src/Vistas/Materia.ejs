@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Materias</title>
+    <style>
+        /* Estilos para el menú de navegación */
+        nav {
+            background-color: #333;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        nav ul li {
+            float: left;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+    </style>
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/inicioProfesor">Inicio</a></li>
+          <li><a href="/Materias">Materias</a></li>
+          <li><a href="/Estudiante">Estudiantes</a></li>
+          <li><a href="/estudiantesPorMateria">Estudiantes Asignados</a></li>
+          <li><a href="/Login">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+    <div class="container mt-5">
+        <h1>Listado de Materias</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(materia => { %>
+                    <tr>
+                        <td><%= materia.id %></td>
+                        <td><%= materia.nombre %></td>
+                        <td><%= materia.descripcion %></td>
+                        <td>
+                            <a href="/Materias/editarM/<%= materia.id %>" class="btn btn-primary">Editar</a>
+                            <a href="/Materias/eliminarM/<%= materia.id %>" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <a href="/Materias/crearM" class="btn btn-success">Nueva Materia</a>
+    </div>
+</body>
+</html>
